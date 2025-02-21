@@ -6,7 +6,6 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Loja Online - Meu Site</title>
     <style>
-        /* Layout Padrão */
         body {
             font-family: Arial, sans-serif;
             margin: 0;
@@ -14,148 +13,15 @@
             background-color: #f5f5f5;
             color: #333;
         }
-
+        
         header {
-            background-color: #333;  /* Cor cinza escuro */
+            background-color: #333;
             color: white;
             padding: 20px;
             text-align: center;
             position: relative;
         }
-
-        nav {
-            background-color: #2196f3;  /* Cor de fundo azul */
-            overflow: hidden;
-        }
-
-        nav a {
-            color: white;
-            padding: 14px 20px;
-            display: inline-block;
-            text-decoration: none;
-            text-align: center;
-        }
-
-        nav a:hover {
-            background-color: #ddd;
-            color: black;
-        }
-
-        .container {
-            padding: 20px;
-        }
-
-        section {
-            margin-bottom: 40px;
-        }
-
-        footer {
-            background-color: #8e24aa;  /* Cor de fundo roxa */
-            color: white;
-            text-align: center;
-            padding: 10px;
-            position: fixed;
-            width: 100%;
-            bottom: 0;
-        }
-
-        /* Layout de Produtos */
-        .products {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-        }
-
-        .product {
-            background-color: #fff;
-            padding: 15px;
-            border: 1px solid #ddd;
-            text-align: center;
-            border-radius: 8px;
-        }
-
-        .product img {
-            width: 100%;
-            height: auto;
-            border-radius: 8px;
-        }
-
-        .product h3 {
-            margin-top: 10px;
-            font-size: 1.2rem;
-        }
-
-        .product p {
-            color: #777;
-        }
-
-        .product .price {
-            font-weight: bold;
-            color: #4CAF50;  /* Cor verde para o preço */
-            margin: 10px 0;
-        }
-
-        .product button {
-            background-color: #4CAF50;  /* Cor de fundo verde para o botão */
-            color: white;
-            padding: 10px;
-            border: none;
-            cursor: pointer;
-            font-size: 1rem;
-            border-radius: 4px;
-        }
-
-        .product button:hover {
-            background-color: #45a049;
-        }
-
-        /* Estilo para telas menores (tablets e celulares grandes) */
-        @media screen and (max-width: 768px) {
-            /* Ajustes gerais */
-            header {
-                padding: 15px;
-                text-align: center;
-            }
-
-            nav a {
-                padding: 10px 15px;
-            }
-
-            .products {
-                grid-template-columns: 1fr 1fr;  /* 2 colunas para tablets e celulares grandes */
-            }
-
-            .product {
-                padding: 10px;
-            }
-
-            .product img {
-                width: 100%;
-                height: auto;
-            }
-
-            footer {
-                padding: 15px;
-                font-size: 14px;
-            }
-        }
-
-        /* Estilo para telas muito pequenas (celulares em modo retrato) */
-        @media screen and (max-width: 480px) {
-            nav a {
-                font-size: 14px;
-            }
-
-            .products {
-                grid-template-columns: 1fr;  /* 1 coluna (empilhando os produtos) */
-            }
-
-            .product {
-                margin: 5px 0;
-            }
-        }
-
-        /* Estilo para o ícone do carrinho */
+        
         #cart-icon {
             position: absolute;
             top: 20px;
@@ -163,158 +29,111 @@
             font-size: 24px;
             cursor: pointer;
         }
-
+        
         #cart-count {
             background-color: red;
             color: white;
             border-radius: 50%;
             padding: 2px 6px;
             font-size: 14px;
-            position: relative;
+            position: absolute;
             top: -10px;
-            left: -5px;
+            right: -10px;
         }
 
-        /* Animação do carrinho */
-        .cart-animation {
+        #cart-modal {
+            display: none;
             position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background-color: #4CAF50;
-            color: white;
-            padding: 10px 20px;
-            border-radius: 5px;
-            animation: slideUp 0.5s ease-out;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
         }
 
-        @keyframes slideUp {
-            0% {
-                transform: translateY(100%);
-                opacity: 0;
-            }
-            100% {
-                transform: translateY(0);
-                opacity: 1;
-            }
+        #cart-content {
+            background: white;
+            width: 50%;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            position: relative;
+        }
+        
+        #cart-items {
+            list-style: none;
+            padding: 0;
+        }
+        
+        #cart-items li {
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .close-btn {
+            background: red;
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            border-radius: 5px;
+            margin-top: 10px;
         }
     </style>
 </head>
 <body>
     <header>
         <h1>Bem-vindo à Nossa Loja Online!</h1>
-        <p>Encontre os melhores produtos para você!</p>
-        <div id="cart-icon">
+        <div id="cart-icon" onclick="showCart()">
             🛒 <span id="cart-count">0</span>
         </div>
     </header>
-
-    <nav>
-        <a href="#home">Home</a>
-        <a href="#about">Sobre</a>
-        <a href="#products">Produtos</a>
-        <a href="#contact">Contato</a>
-    </nav>
-
-    <div class="container">
-        <section id="home">
-            <h2>Home</h2>
-            <p>Seja bem-vindo à nossa loja online! Aqui você encontra os melhores produtos com qualidade garantida. Navegue pelas nossas categorias e aproveite as promoções!</p>
-        </section>
-
-        <section id="about">
-            <h2>Sobre</h2>
-            <p>Somos uma loja dedicada a oferecer os melhores produtos para nossos clientes. Nosso foco é qualidade, atendimento e preço justo. Descubra tudo o que temos para oferecer!</p>
-        </section>
-
-        <section id="products">
-            <h2>Produtos</h2>
-            <div class="products">
-                <div class="product">
-                    <img src="https://drnotebooksc.com.br/wp-content/uploads/assistencia-computador.webp" alt="Produto 1">
-                    <h3>Produto 1</h3>
-                    <p>Descrição do produto 1. Fazemos manutenção da sua maquina em geral.</p>
-                    <p class="price">R$ 99,99</p>
-                    <button>Adicionar ao Carrinho</button>
-                </div>
-                <div class="product">
-                    <img src="https://cdn.dooca.store/1841/files/banner-mobile-montepc-2.jpg?v=1687530215" alt="Produto 2">
-                    <h3>Produto 2</h3>
-                    <p>Descrição do produto 2. Excelente qualidade e ótimo preço para você.</p>
-                    <p class="price">R$ 149,99</p>
-                    <button>Adicionar ao Carrinho</button>
-                </div>
-                <div class="product">
-                    <img src="https://via.placeholder.com/300x200?text=Produto+3" alt="Produto 3">
-                    <h3>Produto 3</h3>
-                    <p>Descrição do produto 3. Ideal para quem busca inovação e tecnologia.</p>
-                    <p class="price">R$ 199,99</p>
-                    <button>Adicionar ao Carrinho</button>
-                </div>
-                <div class="product">
-                    <img src="https://via.placeholder.com/300x200?text=Produto+4" alt="Produto 4">
-                    <h3>Produto 4</h3>
-                    <p>Descrição do produto 4. Perfeito para o seu dia a dia e muito funcional.</p>
-                    <p class="price">R$ 79,99</p>
-                    <button>Adicionar ao Carrinho</button>
-                </div>
-                <div class="product">
-                    <img src="https://via.placeholder.com/300x200?text=Produto+5" alt="Produto 5">
-                    <h3>Produto 5</h3>
-                    <p>Descrição do produto 5. A melhor opção com tecnologia avançada.</p>
-                    <p class="price">R$ 299,99</p>
-                    <button>Adicionar ao Carrinho</button>
-                </div>
-                <div class="product">
-                    <img src="https://via.placeholder.com/300x200?text=Produto+6" alt="Produto 6">
-                    <h3>Produto 6</h3>
-                    <p>Descrição do produto 6. Ideal para quem busca estilo e sofisticação.</p>
-                    <p class="price">R$ 129,99</p>
-                    <button>Adicionar ao Carrinho</button>
-                </div>
-            </div>
-        </section>
-
-        <section id="contact">
-            <h2>Contato</h2>
-            <p>Se você tiver alguma dúvida ou precisar de assistência, entre em contato conosco!</p>
-            <a href="mailto:exemplo@dominio.com" class="contact-button">Enviar Email</a>
-        </section>
+    
+    <div class="products">
+        <div class="product">
+            <h3>Produto 1</h3>
+            <p class="price">R$ 99,99</p>
+            <button onclick="addToCart('Produto 1', 'R$ 99,99')">Adicionar ao Carrinho</button>
+        </div>
+        <div class="product">
+            <h3>Produto 2</h3>
+            <p class="price">R$ 149,99</p>
+            <button onclick="addToCart('Produto 2', 'R$ 149,99')">Adicionar ao Carrinho</button>
+        </div>
+    </div>
+    
+    <div id="cart-modal">
+        <div id="cart-content">
+            <h2>Carrinho de Compras</h2>
+            <ul id="cart-items"></ul>
+            <button class="close-btn" onclick="closeCart()">Fechar</button>
+        </div>
     </div>
 
-    <footer>
-        <p>&copy; 2025 Loja Online. Todos os direitos reservados.</p>
-    </footer>
-
     <script>
-        // Efeito de transição ao clicar no botão de contato
-        document.querySelector('.contact-button').addEventListener('click', function() {
-            alert("Obrigado por entrar em contato!");
-        });
+        let cart = [];
 
-        // Variável para armazenar o número de itens no carrinho
-        let cartCount = 0;
-
-        // Função para adicionar um item ao carrinho
-        function addToCart() {
-            cartCount++;
-            document.getElementById('cart-count').textContent = cartCount;
-
-            // Criar um elemento de animação
-            const animation = document.createElement('div');
-            animation.className = 'cart-animation';
-            animation.textContent = 'Item adicionado ao carrinho!';
-            document.body.appendChild(animation);
-
-            // Remover a animação após 1 segundo
-            setTimeout(() => {
-                animation.remove();
-            }, 1000);
+        function addToCart(name, price) {
+            cart.push({ name, price });
+            document.getElementById('cart-count').textContent = cart.length;
         }
 
-        // Adicionar o evento de clique a todos os botões "Adicionar ao Carrinho"
-        document.querySelectorAll('.product button').forEach(button => {
-            button.addEventListener('click', addToCart);
-        });
+        function showCart() {
+            const cartList = document.getElementById('cart-items');
+            cartList.innerHTML = '';
+            cart.forEach(item => {
+                let li = document.createElement('li');
+                li.textContent = `${item.name} - ${item.price}`;
+                cartList.appendChild(li);
+            });
+            document.getElementById('cart-modal').style.display = 'flex';
+        }
+
+        function closeCart() {
+            document.getElementById('cart-modal').style.display = 'none';
+        }
     </script>
 </body>
 </html>
