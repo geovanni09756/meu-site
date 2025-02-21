@@ -20,6 +20,7 @@
             color: white;
             padding: 20px;
             text-align: center;
+            position: relative;
         }
 
         nav {
@@ -154,12 +155,57 @@
             }
         }
 
+        /* Estilo para o ícone do carrinho */
+        #cart-icon {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        #cart-count {
+            background-color: red;
+            color: white;
+            border-radius: 50%;
+            padding: 2px 6px;
+            font-size: 14px;
+            position: relative;
+            top: -10px;
+            left: -5px;
+        }
+
+        /* Animação do carrinho */
+        .cart-animation {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            animation: slideUp 0.5s ease-out;
+        }
+
+        @keyframes slideUp {
+            0% {
+                transform: translateY(100%);
+                opacity: 0;
+            }
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
     </style>
 </head>
 <body>
     <header>
         <h1>Bem-vindo à Nossa Loja Online!</h1>
         <p>Encontre os melhores produtos para você!</p>
+        <div id="cart-icon">
+            🛒 <span id="cart-count">0</span>
+        </div>
     </header>
 
     <nav>
@@ -244,6 +290,31 @@
         document.querySelector('.contact-button').addEventListener('click', function() {
             alert("Obrigado por entrar em contato!");
         });
+
+        // Variável para armazenar o número de itens no carrinho
+        let cartCount = 0;
+
+        // Função para adicionar um item ao carrinho
+        function addToCart() {
+            cartCount++;
+            document.getElementById('cart-count').textContent = cartCount;
+
+            // Criar um elemento de animação
+            const animation = document.createElement('div');
+            animation.className = 'cart-animation';
+            animation.textContent = 'Item adicionado ao carrinho!';
+            document.body.appendChild(animation);
+
+            // Remover a animação após 1 segundo
+            setTimeout(() => {
+                animation.remove();
+            }, 1000);
+        }
+
+        // Adicionar o evento de clique a todos os botões "Adicionar ao Carrinho"
+        document.querySelectorAll('.product button').forEach(button => {
+            button.addEventListener('click', addToCart);
+        });
     </script>
 </body>
-</html>  
+</html>
