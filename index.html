@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Loja Online - Meu Site</title>
+    <style>
+        /* Layout Padrão */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+
+        header {
+            background-color: #333;  /* Cor cinza escuro */
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        nav {
+            background-color: #2196f3;  /* Cor de fundo azul */
+            overflow: hidden;
+        }
+
+        nav a {
+            color: white;
+            padding: 14px 20px;
+            display: inline-block;
+            text-decoration: none;
+            text-align: center;
+        }
+
+        nav a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+
+        .container {
+            padding: 20px;
+        }
+
+        section {
+            margin-bottom: 40px;
+        }
+
+        footer {
+            background-color: #8e24aa;  /* Cor de fundo roxa */
+            color: white;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+
+        /* Layout de Produtos */
+        .products {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .product {
+            background-color: #fff;
+            padding: 15px;
+            border: 1px solid #ddd;
+            text-align: center;
+            border-radius: 8px;
+        }
+
+        .product img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+
+        .product h3 {
+            margin-top: 10px;
+            font-size: 1.2rem;
+        }
+
+        .product p {
+            color: #777;
+        }
+
+        .product .price {
+            font-weight: bold;
+            color: #4CAF50;  /* Cor verde para o preço */
+            margin: 10px 0;
+        }
+
+        .product button {
+            background-color: #4CAF50;  /* Cor de fundo verde para o botão */
+            color: white;
+            padding: 10px;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            border-radius: 4px;
+        }
+
+        .product button:hover {
+            background-color: #45a049;
+        }
+
+        /* Estilo para telas menores (tablets e celulares grandes) */
+        @media screen and (max-width: 768px) {
+            /* Ajustes gerais */
+            header {
+                padding: 15px;
+                text-align: center;
+            }
+
+            nav a {
+                padding: 10px 15px;
+            }
+
+            .products {
+                grid-template-columns: 1fr 1fr;  /* 2 colunas para tablets e celulares grandes */
+            }
+
+            .product {
+                padding: 10px;
+            }
+
+            .product img {
+                width: 100%;
+                height: auto;
+            }
+
+            footer {
+                padding: 15px;
+                font-size: 14px;
+            }
+        }
+
+        /* Estilo para telas muito pequenas (celulares em modo retrato) */
+        @media screen and (max-width: 480px) {
+            nav a {
+                font-size: 14px;
+            }
+
+            .products {
+                grid-template-columns: 1fr;  /* 1 coluna (empilhando os produtos) */
+            }
+
+            .product {
+                margin: 5px 0;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Bem-vindo à Nossa Loja Online!</h1>
+        <p>Encontre os melhores produtos para você!</p>
+    </header>
+
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#about">Sobre</a>
+        <a href="#products">Produtos</a>
+        <a href="#contact">Contato</a>
+    </nav>
+
+    <div class="container">
+        <section id="home">
+            <h2>Home</h2>
+            <p>Seja bem-vindo à nossa loja online! Aqui você encontra os melhores produtos com qualidade garantida. Navegue pelas nossas categorias e aproveite as promoções!</p>
+        </section>
+
+        <section id="about">
+            <h2>Sobre</h2>
+            <p>Somos uma loja dedicada a oferecer os melhores produtos para nossos clientes. Nosso foco é qualidade, atendimento e preço justo. Descubra tudo o que temos para oferecer!</p>
+        </section>
+
+        <section id="products">
+            <h2>Produtos</h2>
+            <div class="products">
+                <div class="product">
+                    <img src="https://drnotebooksc.com.br/wp-content/uploads/assistencia-computador.webp" alt="Produto 1">
+                    <h3>Produto 1</h3>
+                    <p>Descrição do produto 1. Fazemos manutenção da sua maquina em geral.</p>
+                    <p class="price">R$ 99,99</p>
+                    <button>Adicionar ao Carrinho</button>
+                </div>
+                <div class="product">
+                    <img src="https://cdn.dooca.store/1841/files/banner-mobile-montepc-2.jpg?v=1687530215" alt="Produto 2">
+                    <h3>Produto 2</h3>
+                    <p>Descrição do produto 2. Excelente qualidade e ótimo preço para você.</p>
+                    <p class="price">R$ 149,99</p>
+                    <button>Adicionar ao Carrinho</button>
+                </div>
+                <div class="product">
+                    <img src="https://via.placeholder.com/300x200?text=Produto+3" alt="Produto 3">
+                    <h3>Produto 3</h3>
+                    <p>Descrição do produto 3. Ideal para quem busca inovação e tecnologia.</p>
+                    <p class="price">R$ 199,99</p>
+                    <button>Adicionar ao Carrinho</button>
+                </div>
+                <div class="product">
+                    <img src="https://via.placeholder.com/300x200?text=Produto+4" alt="Produto 4">
+                    <h3>Produto 4</h3>
+                    <p>Descrição do produto 4. Perfeito para o seu dia a dia e muito funcional.</p>
+                    <p class="price">R$ 79,99</p>
+                    <button>Adicionar ao Carrinho</button>
+                </div>
+                <div class="product">
+                    <img src="https://via.placeholder.com/300x200?text=Produto+5" alt="Produto 5">
+                    <h3>Produto 5</h3>
+                    <p>Descrição do produto 5. A melhor opção com tecnologia avançada.</p>
+                    <p class="price">R$ 299,99</p>
+                    <button>Adicionar ao Carrinho</button>
+                </div>
+                <div class="product">
+                    <img src="https://via.placeholder.com/300x200?text=Produto+6" alt="Produto 6">
+                    <h3>Produto 6</h3>
+                    <p>Descrição do produto 6. Ideal para quem busca estilo e sofisticação.</p>
+                    <p class="price">R$ 129,99</p>
+                    <button>Adicionar ao Carrinho</button>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact">
+            <h2>Contato</h2>
+            <p>Se você tiver alguma dúvida ou precisar de assistência, entre em contato conosco!</p>
+            <a href="mailto:exemplo@dominio.com" class="contact-button">Enviar Email</a>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Loja Online. Todos os direitos reservados.</p>
+    </footer>
+
+    <script>
+        // Efeito de transição ao clicar no botão de contato
+        document.querySelector('.contact-button').addEventListener('click', function() {
+            alert("Obrigado por entrar em contato!");
+        });
+    </script>
+</body>
+</html>
